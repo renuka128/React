@@ -1,23 +1,34 @@
-function fun(){
-        let age=18;
-        let name="kiran";
-        let setStatus=false;
-        let userDefault=undefined;
-        let reponseValue=null;
-        console.log(age+" "+name+" "+setStatus+" "+userDefault+" "+reponseValue);
-        let oldage=age;
-        age=25;
-        let status=setStatus;
-        setStatus=true;
-        console.log(age+" "+name+" "+setStatus+" "+userDefault+" "+reponseValue);
+import React, { useState } from 'react'
+import { Dialog,DialogActions,DialogContentText,DialogTitle,DialogContent, Button, TextField } from '@mui/material'
 
-}
-const Pah1=()=>
-{
+const Loginpage=()=>{
+    const[open,openchange]=useState(false);
+    const Openpopup=()=>{
+        openchange(true);
+    }
+    const Closepopup=()=>{
+        openchange(false);
+    }
     return(
         <div>
-            <button onClick={fun}>click</button>
+            <center>
+                <h1 style={{color:"green"}}>Welcome to my Loginpage</h1>
+            <Button onClick={Openpopup}variant='contained' color="secondary">Login</Button>
+            <Dialog open={open} onClose={Closepopup}>
+           <DialogTitle>Welcome to Login</DialogTitle>
+           <DialogContent>
+            
+            <TextField label="User Name" type="text"></TextField>
+            <br></br>
+            <TextField label="password" type="password"></TextField>
+           </DialogContent>
+           <DialogActions>
+            <Button onClick={Closepopup}variant='contained' color='success'>OK</Button>
+            <Button onClick={Closepopup} variant='contained' color='error'>Close</Button>
+           </DialogActions>
+            </Dialog>
+            </center>
         </div>
-    );
-};
- export default Pah1;
+    )
+}
+export  default Loginpage
